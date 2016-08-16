@@ -72,7 +72,7 @@ const ProductList = React.createClass ({
 	    var rows = [];
 	    var lastCategory = null;
         this.props.products.forEach(function(product) {
-   	      if (product.name.indexOf(this.props.filterText) === -1 || (!product.stocked && this.props.inStock) 
+   	      if (product.name.toLowerCase().indexOf(this.props.filterText.toLowerCase()) === -1 || (!product.stocked && this.props.inStock) 
    	      	|| (!product.onsale && this.props.onSale) || (product.price < this.props.minPrice || product.price > this.props.maxPrice)) {
 	        return;
 	      }
@@ -110,7 +110,6 @@ const SearchBar = React.createClass({
 		}
 		componentThis.handleChange();				
 	});
-	//Цены влияют на слайдер
 	priceMax.onchange = function (){				
 			priceSlider.noUiSlider.set([null, this.value])
 	};			
